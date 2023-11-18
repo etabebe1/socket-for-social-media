@@ -12,13 +12,14 @@ const addUser = (userId, socketId) => {
 };
 
 io.on("connection", (socket) => {
-  console.log("User is connected \u{1F680} \u{1F680} \u{1F680}");
-
+  
   // taking userID and socketID from user
   socket.on("addUser", (userId) => {
     addUser(userId, socket.id);
     io.emit("getOnlineUser", users);
   });
+  
+  console.log("User is connected to socket server \u{1F680}");
 
   //*⽥⽥⽥⽥⽥⽥⽥⽥⽥⽥ TEST ⽥⽥⽥⽥⽥⽥⽥⽥⽥⽥*//
 });
