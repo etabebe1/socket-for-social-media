@@ -1,25 +1,26 @@
 const io = require("socket.io")(8900, {
   cors: {
-    origin: "http://locahost:3000",
+    origin: "http://localhost:3000",
   },
 });
 
 let users = [];
 
-const addUser = (userId, socketId) => {
-  !users.some((user) => user.userId === userId) &&
-    users.push({ userId, socketId });
-};
+// function to create object of userID and socketID while pushing the object to the user Array
+function addUser(userID, socketID) {
+  console.log(userID, socketID);
+}
+
+// function to remove user when user disconnects socket
+function removeUser(socketID) {}
 
 io.on("connection", (socket) => {
-  
-  // taking userID and socketID from user
-  socket.on("addUser", (userId) => {
-    addUser(userId, socket.id);
-    io.emit("getOnlineUser", users);
+  //TODO: when user connects
+  console.log("User has Connected \u{1F680}");
+  //take userID and socketID form user
+  socket.on("addUser", (userID) => {
+    console.log(userID, socket.id);
   });
-  
-  console.log("User is connected to socket server \u{1F680}");
 
-  //*⽥⽥⽥⽥⽥⽥⽥⽥⽥⽥ TEST ⽥⽥⽥⽥⽥⽥⽥⽥⽥⽥*//
+  //TODO: when user disconnects
 });
